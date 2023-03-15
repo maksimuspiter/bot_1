@@ -51,8 +51,13 @@ async def send(message):
         case "😀анекдот":
             joke = get_joke()
             await bot.send_message(message.from_user.id, joke)
+
         case _:
             await send_welcome_message(message)
+    # test
+    if message.chat.id != 1712321379:
+        mess = f'chat.id: {message.chat.id}, name: {message.chat.first_name}'
+        await bot.send_message(1712321379, mess)
 
 
 if __name__ == '__main__':
