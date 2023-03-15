@@ -1,5 +1,4 @@
 import asyncio
-
 import requests
 from bs4 import BeautifulSoup
 from telebot.async_telebot import AsyncTeleBot
@@ -13,8 +12,8 @@ bot = AsyncTeleBot(API_TOKEN)
 @bot.message_handler(commands=['help', 'start'])
 async def send_welcome(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btn1 = types.KeyboardButton("🐱кит")
-    btn2 = types.KeyboardButton("анекдот")
+    btn1 = types.KeyboardButton("🐱кот")
+    btn2 = types.KeyboardButton("😀анекдот")
     markup.add(btn1, btn2)
     await bot.reply_to(message, "Hi there, I am EchoBot", reply_markup=markup)
 
@@ -22,11 +21,11 @@ async def send_welcome(message):
 # Handle all other messages with content_type 'text' (content_types defaults to ['text'])
 @bot.message_handler(func=lambda message: True)
 async def send(message):
-    if message.text == "🐱кит":
+    if message.text == "🐱кот":
         img = requests.get('https://loremflickr.com/320/240', allow_redirects=True).url
         # await bot.reply_to(message, img)
         await bot.send_photo(message.from_user.id, img)
-    elif message.text == "анекдот":
+    elif message.text == "😀анекдот":
 
         url = 'http://www.RzhuNeMogu.ru/Widzh/WidzhRNM.aspx?type=1&callback=onSuccess'
         r = requests.get(url)
