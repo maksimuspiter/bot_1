@@ -1,5 +1,7 @@
 from telebot import types
 from time import sleep
+import requests
+import json
 
 import telebot
 from telebot import types
@@ -7,16 +9,23 @@ from telebot import types
 bot = telebot.TeleBot('5896308515:AAGZwJtgI1OZ_KlMNEzxWbjLT4v2KOlAlVs')
 
 
+def get_fact(number='random'):
+    # answer = requests.get('http://numbersapi.com/125/year?json')
+    answer = requests.get(f'http://numbersapi.com/{number}/year?json')
+    print(json.loads(answer.text))
+    data = json.loads(answer.text).get('text', 'default')
+    return data
+
+
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(chat_id='@bot_test_stop', text='hello')
-    # https://t.me/+WihmswUzO_JjMjZi
-# @bot.callback_query_handler(func=lambda callback: callback.data)
-# def check_callback_data(callback):
-#     if callback.data == 'btn1':
-#         bot.send_message(callback.message.chat.id, 'You push btn1')
-#     elif callback.data == 'btn2':
-#         bot.send_message(callback.message.chat.id, 'You push btn2')
+    bot.send_message(message.chat.id, text='hello')
+
+
+@bot.message_handler(regexp=r'[0-9]+')
+def info(message):
+    text = get_fact(message.text)
+    bot.send_message(message.chat.id, text)
 
 
 if __name__ == '__main__':
