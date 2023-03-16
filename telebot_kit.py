@@ -14,6 +14,12 @@ async def first(message):
     await send_welcome_message(message, bot)
 
 
+# @bot.message_handler(commands=['my_option'])
+# async def my_option(message):
+#     await bot.send_message(message.from_user.id,
+#                            f"Test")
+
+
 @bot.message_handler(content_types=['text'])
 async def send(message):
     match message.text:
