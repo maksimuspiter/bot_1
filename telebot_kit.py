@@ -2,7 +2,7 @@ import asyncio
 from telebot.async_telebot import AsyncTeleBot
 # from telebot import types
 from datetime import datetime
-from functions import create_pictures_btns, send_photo, get_joke, send_welcome_message
+from functions import create_pictures_btns, send_photo, get_joke, send_welcome_message, get_fact, create_start_btn
 
 API_TOKEN = '5896308515:AAGZwJtgI1OZ_KlMNEzxWbjLT4v2KOlAlVs'
 
@@ -14,10 +14,11 @@ async def first(message):
     await send_welcome_message(message, bot)
 
 
-# @bot.message_handler(commands=['my_option'])
-# async def my_option(message):
-#     await bot.send_message(message.from_user.id,
-#                            f"Test")
+@bot.message_handler(regexp=r'[0-9]+')
+async def info(message):
+    text = get_fact(message.text)
+    markup = create_start_btn()
+    await bot.send_message(message.chat.id, text, reply_markup=markup)
 
 
 @bot.message_handler(content_types=['text'])
@@ -36,6 +37,9 @@ async def send(message):
             await send_photo(message.from_user.id, bot, 'cat')
         case "🐶dog":
             await send_photo(message.from_user.id, bot, 'dog')
+        case 'interesting_fact_for_data':
+            text = get_fact()
+            await bot.send_message(message.chat.id, text)
         case 'return_back':
             await send_welcome_message(message, bot)
 

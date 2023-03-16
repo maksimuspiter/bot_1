@@ -1,3 +1,5 @@
+import json
+
 import requests
 from bs4 import BeautifulSoup
 from telebot import types
@@ -8,7 +10,8 @@ def create_start_btn():
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
     btn1 = types.KeyboardButton("pictures")
     btn2 = types.KeyboardButton("😀анекдот")
-    kb.add(btn1, btn2)
+    btn3 = types.KeyboardButton("interesting_fact_for_data")
+    kb.add(btn1, btn2, btn3)
     return kb
 
 
@@ -45,5 +48,13 @@ def get_joke():
 async def send_welcome_message(message, bot):
     markup = create_start_btn()
     await bot.send_message(message.from_user.id,
-                           f"Hi {message.chat.first_name} , I am TestBot",
+                           f"Hi {message.chat.first_name} , I am TestBot.\n"
+                           f"I can show you some pictures with cats and dogs.\n"
+                           f"I can tell you interesting number facts.",
                            reply_markup=markup)
+
+
+def get_fact(number='random'):
+    answer = requests.get(f'http://numbersapi.com/{number}/year?json')
+    data = json.loads(answer.text).get('text', 'default')
+    return data
