@@ -24,9 +24,9 @@ def create_pictures_btns():
     return kb
 
 
-async def send_photo(message, bot, img):
+async def send_photo(path, bot, img):
     img = requests.get(f'https://loremflickr.com/320/240/{img}', allow_redirects=True).url
-    await bot.send_photo(message.from_user.id, img)
+    await bot.send_photo(path, img)
 
 
 def get_joke():

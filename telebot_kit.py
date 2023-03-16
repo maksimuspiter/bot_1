@@ -33,9 +33,9 @@ async def send(message):
                                    'Check option',
                                    reply_markup=markup)
         case "🐱cat":
-            await send_photo(message, bot, 'cat')
+            await send_photo(message.from_user.id, bot, 'cat')
         case "🐶dog":
-            await send_photo(message, bot, 'dog')
+            await send_photo(message.from_user.id, bot, 'dog')
         case 'return_back':
             await send_welcome_message(message, bot)
 
