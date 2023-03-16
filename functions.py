@@ -16,10 +16,9 @@ def create_pictures_btns():
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     btn_cat = types.KeyboardButton("🐱cat")
     btn_dog = types.KeyboardButton("🐶dog")
-    my_option = types.KeyboardButton("my_option")
+    # my_option = types.KeyboardButton("my_option")
     return_back = types.KeyboardButton("return")
     kb.add(btn_cat, btn_dog)
-    kb.add(my_option)
     kb.add(return_back)
 
     return kb
