@@ -3,8 +3,9 @@ from telebot.async_telebot import AsyncTeleBot
 # from telebot import types
 from datetime import datetime
 from functions import create_pictures_btns, send_photo, get_joke, send_welcome_message, get_fact, create_start_btn
+import sicret_data
 
-API_TOKEN = '5896308515:AAGZwJtgI1OZ_KlMNEzxWbjLT4v2KOlAlVs'
+API_TOKEN = sicret_data.TOKEN
 
 bot = AsyncTeleBot(API_TOKEN)
 

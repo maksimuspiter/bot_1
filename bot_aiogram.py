@@ -2,9 +2,11 @@ import time
 import logging
 
 from aiogram import Bot, Dispatcher, executor, types
-
+import sicret_data
 logging.basicConfig(level=logging.INFO)
-TOKEN = '5896308515:AAGZwJtgI1OZ_KlMNEzxWbjLT4v2KOlAlVs'
+
+
+TOKEN = sicret_data.TOKEN
 MSG = 'Hi!{}'
 
 bot = Bot(token=TOKEN)

@@ -2,9 +2,9 @@ import asyncio
 from telebot.async_telebot import AsyncTeleBot
 from functions import create_pictures_btns, send_photo, get_joke, send_welcome_message
 
-API_TOKEN = '5896308515:AAGZwJtgI1OZ_KlMNEzxWbjLT4v2KOlAlVs'
+import sicret_data
 
-bot = AsyncTeleBot(API_TOKEN)
+bot = AsyncTeleBot(sicret_data.API_TOKEN)
 channel_id = '@bot_test_stop'
 
 

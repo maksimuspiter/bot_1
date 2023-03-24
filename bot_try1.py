@@ -5,8 +5,9 @@ import json
 
 import telebot
 from telebot import types
+import sicret_data
 
-bot = telebot.TeleBot('5896308515:AAGZwJtgI1OZ_KlMNEzxWbjLT4v2KOlAlVs')
+bot = telebot.TeleBot(sicret_data.API_TOKEN)
 
 
 def get_fact(number='random'):
