@@ -24,6 +24,7 @@ async def start_handler(message: types.Message):
 
     for i in range(10):
         time.sleep(2)
+        #d 
 
         await bot.send_message(user_id, MSG.format(user_name))
 
