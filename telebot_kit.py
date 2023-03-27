@@ -3,7 +3,7 @@ from telebot.async_telebot import AsyncTeleBot
 # from telebot import types
 from datetime import datetime
 from functions import create_pictures_btns, send_photo, get_joke, send_welcome_message, get_fact, create_start_btn
-import sicret_data
+import data.sicret_data as sicret_data
 
 API_TOKEN = sicret_data.TOKEN
 
